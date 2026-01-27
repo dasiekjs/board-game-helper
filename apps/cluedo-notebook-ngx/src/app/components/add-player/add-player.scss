@@ -1,0 +1,14 @@
+@use '@angular/material' as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+.input-player-name {
+  @include mat.form-field-overrides((
+    outlined-focus-label-text-color: #E0E0E0,
+    outlined-focus-outline-color: #990000,
+  ));
+}
+.add-player-button {
+  @include mat.button-overrides((
+    text-label-text-color: #E0E0E0,
+  ));
+}
