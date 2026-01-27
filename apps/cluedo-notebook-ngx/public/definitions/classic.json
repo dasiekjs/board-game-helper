@@ -1,0 +1,32 @@
+{
+  "title": "Cluedo Classic (2012)",
+  "definition": {
+    "suspects": [
+      "ms_scarlet",
+      "colonel_mustard",
+      "mayor_green",
+      "lawyer_peacock",
+      "prof_plum",
+      "chef_white"
+    ],
+    "items": [
+      "candlestick",
+      "wrench",
+      "line",
+      "metal_pipe",
+      "revolver",
+      "dagger"
+    ],
+    "rooms": [
+      "veranda",
+      "kitchen",
+      "billiard_room",
+      "winter_garden",
+      "dining_room",
+      "library",
+      "office",
+      "hall",
+      "living_room"
+    ]
+  }
+}

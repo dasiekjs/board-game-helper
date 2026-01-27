@@ -1,0 +1,6 @@
+@reference "tailwindcss";
+
+.application-tab-content {
+  @apply px-4 py-2;
+}
+

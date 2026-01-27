@@ -1,0 +1,32 @@
+<table class="items-table">
+  <thead>
+  <tr>
+    <th class="items-element" colspan="2"></th>
+    @for (player of players(); track player.id) {
+      <th>{{player.name}}</th>
+    }
+  </tr>
+  </thead>
+  <tbody>
+    @for (element of elements(); track $index) {
+      <tr class="items-table-row">
+        <td class="items-table-row-label" colspan="2">{{ ('definition.'+gameType()+'.'+type()+'.'+element) | transloco }}</td>
+        @for (player of players(); track player.id) {
+        <td (click)="selectField(player.id, element)">
+          <div class="selected-icon">
+            @switch (isSelected(player.id, element)) {
+              @case ('have') {
+                <lucide-angular [img]="xIcon"/>
+              }
+              @case ('may-have') {
+                <lucide-angular [img]="questionMarkIcon"/>
+              }
+            }
+          </div>
+        </td>
+        }
+      </tr>
+    }
+
+  </tbody>
+</table>

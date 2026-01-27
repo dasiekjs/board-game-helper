@@ -1,0 +1,49 @@
+<div class="application-title px-4 py-2 flex items-center justify-between">
+  <h2 class="text-xl font-bold flex items-center gap-2 py-2">
+    <lucide-angular [img]="SearchAlertIcon" color="#990000"/>
+    <span>Case Notebook</span>
+  </h2>
+  <div class="flex gap-2">
+    <button matIconButton (click)="reset()">
+      <lucide-angular [img]="Reset" color="#990000"/>
+    </button>
+      <button matIconButton (click)="addPlayer()" [disabled]="!canAddMorePlayer()">
+        <lucide-angular [img]="UserPlus" color="#990000"/>
+      </button>
+  </div>
+</div>
+<mat-tab-group class="application-tab">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      {{ 'definition.classic.titles.suspects' | transloco }}
+    </ng-template>
+    <div class="application-tab-content">
+      <clu-items-table
+        [elements]="suspects"
+        [type]="'suspects'"
+      />
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      {{ 'definition.classic.titles.items' | transloco }}
+    </ng-template>
+    <div class="application-tab-content">
+      <clu-items-table
+        [elements]="items"
+        [type]="'items'"
+      />
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      {{ 'definition.classic.titles.rooms' | transloco }}
+    </ng-template>
+    <div class="application-tab-content">
+      <clu-items-table
+        [elements]="rooms"
+        [type]="'rooms'"
+      />
+    </div>
+  </mat-tab>
+</mat-tab-group>

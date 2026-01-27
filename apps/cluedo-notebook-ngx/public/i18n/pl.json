@@ -1,0 +1,67 @@
+{
+  "title": "Notatnik Cluedo",
+  "description": "Notatnik do gry Cluedo z 2012 roku",
+  "actions": {
+    "add-player": "Dodaj gracza",
+    "reset": {
+      "message": "Czy na pewno chcesz zresetować grę?"
+    }
+  },
+  "add-player": {
+    "title": "Dodaj następnego gracza",
+    "form": {
+      "name": "Nazwa gracza"
+    },
+    "actions": {
+      "add": "Dodaj",
+      "cancel": "Anuluj"
+    }
+  },
+  "mark-user": {
+    "title": "Oznacz gracza",
+    "form": {
+      "user": "Gracz"
+    },
+    "actions": {
+      "may-have": "Może mieć",
+      "have": "Ma",
+      "cancel": "Anuluj"
+    }
+  },
+  "definition": {
+    "classic": {
+      "titles": {
+        "suspects": "Podejrzani",
+        "rooms": "Miejsce",
+        "items": "Przedmioty"
+      },
+      "suspects": {
+        "ms_scarlet": "Panna Scarlet",
+        "colonel_mustard": "Pułkownik Mustard",
+        "mayor_green": "Burmistrz Green",
+        "lawyer_peacock": "Prawniczka Peacock",
+        "prof_plum": "Profesor Plum",
+        "chef_white": "Szefowa Kuchni White"
+      },
+      "items": {
+        "candlestick": "Świecznik",
+        "wrench": "Klucz francuski",
+        "line": "Linia",
+        "metal_pipe": "Metalowa rura",
+        "revolver": "Revolver",
+        "dagger": "Sztylet"
+      },
+      "rooms": {
+        "veranda": "Weranda",
+        "kitchen": "Kuchnia",
+        "billiard_room": "Pokój do bilarda",
+        "winter_garden": "Ogród zimowy",
+        "dining_room": "Jadalnia",
+        "library": "Biblioteka",
+        "office": "Gabinet",
+        "hall": "Hol",
+        "living_room": "Salon"
+      }
+    }
+  }
+}

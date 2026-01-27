@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>{{'add-player.title' | transloco}}</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="outline" subscriptSizing="fixed" class="py-5">
+    <mat-label>{{'add-player.form.name' | transloco}}</mat-label>
+    <input matInput [(ngModel)]="playerName" cdkFocusInitial (keyup.enter)="addNewPlayer()"/>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton (click)="onNoClick()">
+    {{'add-player.actions.cancel' | transloco}}
+  </button>
+  <button matButton [mat-dialog-close]="playerName()">
+    {{'add-player.actions.add' | transloco}}
+  </button>
+</mat-dialog-actions>

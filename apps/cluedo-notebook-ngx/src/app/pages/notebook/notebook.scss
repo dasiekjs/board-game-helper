@@ -1,0 +1,14 @@
+@use '@angular/material' as mat;
+
+
+:host {
+  @include mat.tabs-overrides((
+    container-height: 3rem,
+    active-indicator-height: .25rem,
+    active-indicator-color: #990000,
+    active-focus-indicator-color: #990000,
+    active-label-text-color: #990000,
+    active-focus-label-text-color: #990000,
+    label-text-weight: 'bold'
+  ));
+}

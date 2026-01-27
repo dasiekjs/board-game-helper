@@ -1,0 +1,23 @@
+@reference 'tailwindcss';
+
+
+.items-table {
+  @apply w-full;
+}
+
+.items-table td {
+  @apply px-4 py-3 mx-2 bg-[#211214];
+  border: 2px solid #121212;
+}
+.items-table td:not(.items-table-row-label) {
+  @apply hover:bg-[#312224] cursor-pointer ;
+}
+.items-table td div.selected-icon {
+  @apply flex justify-center;
+}
+.items-table tr td:first-child {
+  @apply rounded-l-2xl;
+}
+.items-table tr td:last-child {
+  @apply rounded-r-2xl;
+}

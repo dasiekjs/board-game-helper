@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@source "../src/**/*.{html,ts,css}";
+/* You can add global styles to this file, and also import other style files */
+
+
+body {
+  @apply bg-[#121212] text-[#E0E0E0];
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+}
