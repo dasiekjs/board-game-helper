@@ -6,7 +6,7 @@
     "serve:cluedo": "nx run cluedo-notebook-ngx:serve:development",
     "affected:lint": "nx affected:lint",
     "affected:test": "nx affected:test",
-    "build:cluedo-notebook-ngx": "nx run cluedo-notebook-ngx:build:production"
+    "build:cluedo-notebook-ngx:prod": "nx run cluedo-notebook-ngx:build:production"
   },
   "private": true,
   "devDependencies": {
