@@ -1,7 +1,6 @@
 import {Component, computed, inject, input} from '@angular/core';
 
 import {CircleQuestionMarkIcon, LucideAngularModule, XIcon} from "lucide-angular";
-import {JsonPipe} from "@angular/common";
 import {TranslocoPipe} from "@jsverse/transloco";
 import {cluedoStore} from "../../+state/store";
 
@@ -9,7 +8,6 @@ import {cluedoStore} from "../../+state/store";
   selector: 'clu-items-table',
   imports: [
     LucideAngularModule,
-    JsonPipe,
     TranslocoPipe
   ],
   templateUrl: './items-table.html',

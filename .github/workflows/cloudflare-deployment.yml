@@ -1,0 +1,42 @@
+name: Manual Deploy to Cloudflare
+
+on:
+  workflow_dispatch:
+    inputs:
+      app_name:
+        description: 'Application to deploy'
+        required: true
+        type: choice
+        options:
+          - cluedo-notebook-ngx
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Application
+        run: npx nx build ${{ github.event.inputs.app_name }} --prod
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+
+          projectName: ${{ github.event.inputs.app_name }}
+          directory: dist/apps/${{ github.event.inputs.app_name }}/browser
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

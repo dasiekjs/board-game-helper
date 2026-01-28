@@ -1,4 +1,4 @@
-import {Component, computed, inject, signal} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {
   MatDialogActions,
   MatDialogClose,
@@ -9,8 +9,7 @@ import {
 import {MatFormField, MatInput, MatLabel} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {MatButton} from "@angular/material/button";
-import {MatIcon} from "@angular/material/icon";
-import {LucideAngularModule, UserIcon} from "lucide-angular";
+import {LucideAngularModule} from "lucide-angular";
 import {TranslocoPipe} from "@jsverse/transloco";
 
 @Component({
@@ -43,6 +42,4 @@ export class AddPlayer {
   protected addNewPlayer() {
     this.dialogRef.close(this.playerName());
   }
-
-  protected readonly UserIcon = UserIcon;
 }

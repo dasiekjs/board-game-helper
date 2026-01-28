@@ -1,9 +1,12 @@
 {
   "name": "@board-game-helper/source",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
-    "serve:cluedo": "nx run cluedo-notebook-ngx:serve:development"
+    "serve:cluedo": "nx run cluedo-notebook-ngx:serve:development",
+    "affected:lint": "nx affected:lint",
+    "affected:test": "nx affected:test",
+    "build:cluedo-notebook-ngx": "nx run cluedo-notebook-ngx:build:production"
   },
   "private": true,
   "devDependencies": {

@@ -1,16 +1,20 @@
-import {Component, computed, inject} from '@angular/core';
-import {JsonPipe} from "@angular/common";
-import {cluedoStore} from "../../+state/store";
-import {TranslocoPipe, TranslocoService} from "@jsverse/transloco";
-import {ListIcon, LucideAngularModule, RotateCcw, SearchAlertIcon, UserPlus, UserSearchIcon} from "lucide-angular";
-import {MatDialog} from "@angular/material/dialog";
-import {MatTab, MatTabGroup, MatTabLabel} from "@angular/material/tabs";
-import {ItemsTable} from "../../components/items-table/items-table";
-import {AddPlayer} from "../../components/add-player/add-player";
-import {MatIconButton} from "@angular/material/button";
+import { Component, computed, inject } from '@angular/core';
+import { cluedoStore } from '../../+state/store';
+import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
+import {
+  LucideAngularModule,
+  RotateCcw,
+  SearchAlertIcon,
+  UserPlus,
+} from 'lucide-angular';
+import { MatDialog } from '@angular/material/dialog';
+import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
+import { ItemsTable } from '../../components/items-table/items-table';
+import { AddPlayer } from '../../components/add-player/add-player';
+import { MatIconButton } from '@angular/material/button';
 
 @Component({
-  selector: 'bgh-dream-notebook',
+  selector: 'clu-dream-notebook',
   imports: [
     TranslocoPipe,
     LucideAngularModule,
@@ -18,16 +22,12 @@ import {MatIconButton} from "@angular/material/button";
     MatTab,
     MatTabLabel,
     ItemsTable,
-    MatIconButton
+    MatIconButton,
   ],
   templateUrl: './notebook.html',
-  styleUrls: [
-    './notebook.scss',
-    './notebook.css'
-  ]
+  styleUrls: ['./notebook.scss', './notebook.css'],
 })
 export class Notebook {
-
   private store = inject(cluedoStore);
   private dialog = inject(MatDialog);
   private transloco = inject(TranslocoService);
@@ -41,7 +41,6 @@ export class Notebook {
   protected canAddMorePlayer = computed(() => this.store.canAddMorePlayer());
 
   protected readonly SearchAlertIcon = SearchAlertIcon;
-
 
   addPlayer() {
     const ref = this.dialog.open(AddPlayer);

@@ -2,7 +2,6 @@ import {ActivatedRouteSnapshot, Route} from '@angular/router';
 import {inject} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {tap} from "rxjs";
-import {GameSelector} from "./pages/game-selector/game-selector";
 import {AppRoot} from "./pages/app-root/app-root";
 import {Notebook} from "./pages/notebook/notebook";
 import {cluedoStore} from "./+state/store";
