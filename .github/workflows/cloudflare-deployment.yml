@@ -48,8 +48,8 @@ jobs:
       - name: Build Application
         run: |
           SHORT_SHA=$(git rev-parse --short HEAD)
-          TIMESTAMP=$(date +'%Y-%m-%d %H:%M')
-          APP_VERSION="v.${SHORT_SHA}-${TIMESTAMP}" npm run build:${{ github.event.inputs.app_name }}:prod
+          TIMESTAMP=$(date +'%Y-%m-%d_%H:%M')
+          APP_VERSION="${SHORT_SHA}-${TIMESTAMP}" npm run build:${{ github.event.inputs.app_name }}:prod
         #run: npm run build:${{ github.event.inputs.app_name }}:prod
 
       - name: Upload Build Artifact
