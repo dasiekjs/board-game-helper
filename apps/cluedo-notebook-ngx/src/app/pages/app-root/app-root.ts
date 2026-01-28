@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 import {RouterOutlet} from "@angular/router";
 
 @Component({
@@ -7,6 +7,5 @@ import {RouterOutlet} from "@angular/router";
     RouterOutlet
   ],
   template: '<router-outlet/>',
-  styleUrl: './app-root.scss',
 })
 export class AppRoot {}
