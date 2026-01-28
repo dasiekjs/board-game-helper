@@ -42,6 +42,9 @@ export class Notebook {
 
   protected readonly SearchAlertIcon = SearchAlertIcon;
 
+
+  protected readonly version = process.env.APP_VERSION;
+
   addPlayer() {
     const ref = this.dialog.open(AddPlayer);
 

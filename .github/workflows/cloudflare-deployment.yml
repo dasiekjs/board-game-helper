@@ -46,7 +46,11 @@ jobs:
         run: npm ci
 
       - name: Build Application
-        run: npm run build:${{ github.event.inputs.app_name }}:prod
+        run: |
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          TIMESTAMP=$(date +'%Y-%m-%d %H:%M')
+          APP_VERSION="v.${SHORT_SHA}-${TIMESTAMP}" npm run build:${{ github.event.inputs.app_name }}:prod
+        #run: npm run build:${{ github.event.inputs.app_name }}:prod
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
