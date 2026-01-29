@@ -3,27 +3,51 @@
   <tr>
     <th class="items-element" colspan="2"></th>
     @for (player of players(); track player.id) {
-      <th>{{player.name}}</th>
+      <th>{{ player.name }}</th>
     }
   </tr>
   </thead>
   <tbody>
     @for (element of elements(); track $index) {
       <tr class="items-table-row">
-        <td class="items-table-row-label" colspan="2">{{ ('definition.'+gameType()+'.'+type()+'.'+element) | transloco }}</td>
-        @for (player of players(); track player.id) {
-        <td (click)="selectField(player.id, element)">
-          <div class="selected-icon">
-            @switch (isSelected(player.id, element)) {
-              @case ('have') {
-                <lucide-angular [img]="xIcon"/>
-              }
-              @case ('may-have') {
-                <lucide-angular [img]="questionMarkIcon"/>
-              }
-            }
-          </div>
+        <td class="items-table-row-label"
+            colspan="2">{{ ('definition.' + gameType() + '.' + type() + '.' + element) | transloco }}
         </td>
+        @for (player of players(); track player.id) {
+          @let selectedStatus = isSelected(player.id, element);
+          <td [matMenuTriggerFor]="menu">
+            <div class="selected-icon">
+              @switch (selectedStatus) {
+                @case ('have') {
+                  <lucide-angular [img]="xIcon"/>
+                }
+                @case ('may-have') {
+                  <lucide-angular [img]="questionMarkIcon"/>
+                }
+                @default {
+                  <lucide-angular [img]="dotIcon" color="#990000"/>
+                }
+              }
+            </div>
+            <mat-menu #menu="matMenu">
+              @if (selectedStatus !== 'have') {
+                <button mat-menu-item (click)="selectField(player.id, element, 'have')">
+                  <span>{{ 'mark-user.actions.have' | transloco }}</span>
+                </button>
+              }
+              @if (selectedStatus !== 'may-have') {
+                <button mat-menu-item (click)="selectField(player.id, element, 'may-have')">
+                  <span>{{ 'mark-user.actions.may-have' | transloco }}</span>
+                </button>
+              }
+              @if (selectedStatus !== null) {
+                <mat-divider/>
+                <button mat-menu-item (click)="selectField(player.id, element, null)">
+                  <span>{{ 'mark-user.actions.cancel' | transloco }}</span>
+                </button>
+              }
+            </mat-menu>
+          </td>
         }
       </tr>
     }

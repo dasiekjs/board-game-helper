@@ -56,14 +56,14 @@ export const cluedoStore = signalStore(
         ]
       }))
     },
-    selectField: (player: string | number, element: string) => {
+    selectField: (player: string | number, element: string, status: AssignmentStatus = null) => {
       const elementStatus = state.assignments()?.[element]?.[player] ?? null;
-      let status = null;
-      if (elementStatus === null) {
-        status = 'have';
-      } else if (elementStatus === 'have') {
-        status = 'may-have';
-      }
+      // let status = null;
+      // if (elementStatus === null) {
+      //   status = 'have';
+      // } else if (elementStatus === 'have') {
+      //   status = 'may-have';
+      // }
 
       patchState(state, (store) => ({
         ...store,
