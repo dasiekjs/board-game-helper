@@ -40,7 +40,7 @@
                   <span>{{ 'mark-user.actions.may-have' | transloco }}</span>
                 </button>
               }
-              @if (selectedStatus !== null) {
+              @if (selectedStatus == 'have' || selectedStatus == 'may-have') {
                 <mat-divider/>
                 <button mat-menu-item (click)="selectField(player.id, element, null)">
                   <span>{{ 'mark-user.actions.cancel' | transloco }}</span>
