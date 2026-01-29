@@ -7,7 +7,7 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular/build:application",
+      "executor": "@nx/angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/cluedo-notebook-ngx",
@@ -22,6 +22,9 @@
         "styles": [
           "apps/cluedo-notebook-ngx/src/styles.css",
           "apps/cluedo-notebook-ngx/src/material-styles.scss"
+        ],
+        "plugins": [
+          "apps/cluedo-notebook-ngx/plugins/app-version-env-plugin.js"
         ]
       },
       "configurations": {
@@ -50,7 +53,7 @@
     },
     "serve": {
       "continuous": true,
-      "executor": "@angular/build:dev-server",
+      "executor": "@nx/angular:dev-server",
       "configurations": {
         "production": {
           "buildTarget": "cluedo-notebook-ngx:build:production"

@@ -10,7 +10,25 @@ on:
         options:
           - cluedo-notebook-ngx
 jobs:
-  deploy:
+  prepare-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+  build-application:
+    needs: prepare-project
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -28,15 +46,32 @@ jobs:
         run: npm ci
 
       - name: Build Application
-        run: npx nx build ${{ github.event.inputs.app_name }} --prod
+        run: |
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          TIMESTAMP=$(date +'%Y-%m-%d_%H:%M')
+          APP_VERSION="${SHORT_SHA}-${TIMESTAMP}" npm run build:${{ github.event.inputs.app_name }}:prod
+        #run: npm run build:${{ github.event.inputs.app_name }}:prod
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact-${{ github.event.inputs.app_name }}
+          path: dist/apps/${{ github.event.inputs.app_name }}/browser
+          retention-days: 1
+
+  deploy-to-cloudflare:
+    needs: build-application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact-${{ github.event.inputs.app_name }}
+          path: dist-artifact
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-
-
-          projectName: ${{ github.event.inputs.app_name }}
-          directory: dist/apps/${{ github.event.inputs.app_name }}/browser
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          command: pages deploy dist-artifact --project-name=${{ github.event.inputs.app_name }} --commit-dirty=true
