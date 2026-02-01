@@ -29,7 +29,7 @@ export class ItemsTable {
   // definition from store
   private cluedoStore = inject(cluedoStore);
 
-  protected players = computed(() =>this.cluedoStore.players());
+  protected players = computed(() =>this.cluedoStore.playersInGame());
 
   protected xIcon = XIcon;
   protected questionMarkIcon = CircleQuestionMarkIcon;

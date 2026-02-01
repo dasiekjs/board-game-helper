@@ -19,7 +19,7 @@ const LOCAL_STORAGE_KEY = 'dasiekjs:cluedo-notebook-state';
 export const cluedoStore = signalStore(
   withState(initialState),
   withComputed(({ players }) => ({
-    players: () => players(),
+    playersInGame: () => players(),
     canAddMorePlayer: () => players().length < 6
   })),
   withHooks({
@@ -47,6 +47,9 @@ export const cluedoStore = signalStore(
   }),
   withMethods((state) => ({
     addPlayer: (name: string) => {
+      if (!state.canAddMorePlayer()) {
+        return;
+      }
       const player = {id: state.players().length + 1, name};
       patchState(state, (store) => ({
         ...store,
@@ -57,14 +60,6 @@ export const cluedoStore = signalStore(
       }))
     },
     selectField: (player: string | number, element: string, status: AssignmentStatus = null) => {
-      const elementStatus = state.assignments()?.[element]?.[player] ?? null;
-      // let status = null;
-      // if (elementStatus === null) {
-      //   status = 'have';
-      // } else if (elementStatus === 'have') {
-      //   status = 'may-have';
-      // }
-
       patchState(state, (store) => ({
         ...store,
         assignments: {
@@ -85,7 +80,8 @@ export const cluedoStore = signalStore(
         ...store,
         gameDefinition: type,
         players: state.players().length ? state.players() : [currentPlayer],
-        suspects, rooms, items
+        suspects, rooms, items,
+        assignments: {}
       }));
     },
     resetGame: () => {
