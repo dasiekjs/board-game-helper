@@ -1,0 +1,89 @@
+<div class="preview-data">
+  <table class="w-full">
+    <thead class="table-header">
+      <tr>
+        <th class="text-gray-700">#</th>
+        @for (player of players(); track $index) {
+          <th class="px-6 py-3 font-medium">{{ player }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="table-row-header">
+        {{ 'definition.' + gameType() + '.titles.suspects' | transloco }}
+      </td>
+    </tr>
+      @for (suspect of suspects(); track $index) {
+        <tr class="table-row">
+          <td class="table-row-item">{{ 'definition.' + gameType() + '.suspects.'+ suspect.element | transloco }}</td>
+          @for (value of suspect.results; track $index) {
+            <td>
+              @switch (value) {
+                @case ('have') {
+                  <lucide-angular [img]="xIcon"/>
+                }
+                @case ('may-have') {
+                  <lucide-angular [img]="questionMarkIcon"/>
+                }
+                @default {
+                  <lucide-angular [img]="dotIcon" color="#990000"/>
+                }
+              }
+            </td>
+          }
+        </tr>
+      }
+    <tr>
+      <td class="table-row-header">
+        {{ 'definition.' + gameType() + '.titles.items' | transloco }}
+      </td>
+    </tr>
+      @for (item of items(); track $index) {
+        <tr class="table-row">
+          <td class="table-row-item">{{ 'definition.' + gameType() + '.items.'+ item.element | transloco }}</td>
+          @for (value of item.results; track $index) {
+            <td>
+              @switch (value) {
+                @case ('have') {
+                  <lucide-angular [img]="xIcon"/>
+                }
+                @case ('may-have') {
+                  <lucide-angular [img]="questionMarkIcon"/>
+                }
+                @default {
+                  <lucide-angular [img]="dotIcon" color="#990000"/>
+                }
+              }
+            </td>
+          }
+        </tr>
+      }
+    <tr>
+      <td class="table-row-header">
+        {{ 'definition.' + gameType() + '.titles.rooms' | transloco }}
+      </td>
+    </tr>
+      @for (room of rooms(); track $index) {
+        <tr class="table-row">
+          <td class="table-row-item">{{ 'definition.' + gameType() + '.rooms.'+ room.element | transloco }}</td>
+          @for (value of room.results; track $index) {
+            <td>
+              @switch (value) {
+                @case ('have') {
+                  <lucide-angular [img]="xIcon"/>
+                }
+                @case ('may-have') {
+                  <lucide-angular [img]="questionMarkIcon"/>
+                }
+                @default {
+                  <lucide-angular [img]="dotIcon" color="#990000"/>
+                }
+              }
+            </td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

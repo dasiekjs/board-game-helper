@@ -5,13 +5,15 @@ import {
   LucideAngularModule, RefreshCcwDot,
   RotateCcw,
   SearchAlertIcon,
-  UserPlus,
+  UserPlus, UserRoundSearch,
 } from 'lucide-angular';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTab, MatTabGroup, MatTabLabel } from '@angular/material/tabs';
 import { ItemsTable } from '../../components/items-table/items-table';
 import { AddPlayer } from '../../components/add-player/add-player';
-import { MatIconButton } from '@angular/material/button';
+import {MatButton, MatIconButton} from '@angular/material/button';
+import {MatBottomSheet} from "@angular/material/bottom-sheet";
+import {PreviewData} from "../../components/preview-data/preview-data";
 
 @Component({
   selector: 'clu-dream-notebook',
@@ -23,6 +25,7 @@ import { MatIconButton } from '@angular/material/button';
     MatTabLabel,
     ItemsTable,
     MatIconButton,
+    MatButton,
   ],
   templateUrl: './notebook.html',
   styleUrls: ['./notebook.scss', './notebook.css'],
@@ -30,6 +33,7 @@ import { MatIconButton } from '@angular/material/button';
 export class Notebook {
   private store = inject(cluedoStore);
   private dialog = inject(MatDialog);
+  private bottomSheet = inject(MatBottomSheet);
   private transloco = inject(TranslocoService);
 
   protected type = this.store.gameDefinition();
@@ -41,6 +45,10 @@ export class Notebook {
   protected canAddMorePlayer = computed(() => this.store.canAddMorePlayer());
 
   protected readonly SearchAlertIcon = SearchAlertIcon;
+  protected readonly UserPlus = UserPlus;
+  protected readonly Reset = RotateCcw;
+  protected readonly UserRoundSearch = UserRoundSearch;
+  protected readonly ResetWithoutPlayers = RefreshCcwDot;
 
 
   protected readonly version = process.env.APP_VERSION;
@@ -55,14 +63,13 @@ export class Notebook {
     });
   }
 
-  protected readonly UserPlus = UserPlus;
-  protected readonly Reset = RotateCcw;
-  protected readonly ResetWithoutPlayers= RefreshCcwDot;
-
   protected reset() {
     if (confirm(this.transloco.translate('actions.reset.message'))) {
       this.store.resetGame();
     }
+  }
+  protected previewData() {
+    this.bottomSheet.open(PreviewData);
   }
 
   protected resetWithoutPlayers() {
