@@ -13,6 +13,9 @@
 .table-header {
   @apply text-sm border-b sticky top-0;
 }
+.table-row-item-icon div {
+  @apply flex justify-center;
+}
 .table-header, .table-row-item, .table-row-header, table tr  {
   /* For background color of the table cells*/
   background-color: var(--mat-bottom-sheet-container-background-color, var(--mat-sys-surface-container-low));
