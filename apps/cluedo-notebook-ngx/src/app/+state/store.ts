@@ -93,6 +93,9 @@ export const cluedoStore = signalStore(
         players: [{id: 1, name: 'Me'}],
         assignments: {}
       });
+    },
+    resetWithoutPlayers: () => {
+      patchState(state, {assignments: {}});
     }
   }))
 )

@@ -4,6 +4,9 @@
     <span>Case Notebook</span>
   </h2>
   <div class="flex gap-2">
+    <button matIconButton (click)="resetWithoutPlayers()">
+      <lucide-angular [img]="ResetWithoutPlayers" color="#990000"/>
+    </button>
     <button matIconButton (click)="reset()">
       <lucide-angular [img]="Reset" color="#990000"/>
     </button>

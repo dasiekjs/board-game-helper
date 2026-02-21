@@ -5,6 +5,9 @@
     "add-player": "Dodaj gracza",
     "reset": {
       "message": "Czy na pewno chcesz zresetować grę?"
+    },
+    "resetWithoutPlayers": {
+      "message": "Czy na pewno chcesz zresetować grę (bez resetowania graczy)?"
     }
   },
   "add-player": {

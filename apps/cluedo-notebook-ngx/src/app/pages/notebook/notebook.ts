@@ -2,7 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { cluedoStore } from '../../+state/store';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import {
-  LucideAngularModule,
+  LucideAngularModule, RefreshCcwDot,
   RotateCcw,
   SearchAlertIcon,
   UserPlus,
@@ -57,10 +57,17 @@ export class Notebook {
 
   protected readonly UserPlus = UserPlus;
   protected readonly Reset = RotateCcw;
+  protected readonly ResetWithoutPlayers= RefreshCcwDot;
 
   protected reset() {
     if (confirm(this.transloco.translate('actions.reset.message'))) {
       this.store.resetGame();
+    }
+  }
+
+  protected resetWithoutPlayers() {
+    if (confirm(this.transloco.translate('actions.resetWithoutPlayers.message'))) {
+      this.store.resetWithoutPlayers();
     }
   }
 }
