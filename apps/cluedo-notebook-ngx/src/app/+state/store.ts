@@ -68,7 +68,6 @@ export const cluedoStore = signalStore(
           results: result
         });
       }
-      console.log(roomsGroup)
       return {
         players: _players.map((v) => v.name),
         groups: {

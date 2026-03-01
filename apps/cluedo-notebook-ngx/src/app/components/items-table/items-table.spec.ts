@@ -15,9 +15,7 @@ type CluedoSignalState = {
 describe('ItemsTable', () => {
   let component: ItemsTable;
   let fixture: ComponentFixture<ItemsTable>;
-  let mockedState: CluedoSignalState;
-
-  mockedState = {
+  const mockedState: CluedoSignalState = {
     gameDefinition: signal<string>('classic'),
     players: signal<Player[]>([]),
     suspects: signal<string[]>([]),
