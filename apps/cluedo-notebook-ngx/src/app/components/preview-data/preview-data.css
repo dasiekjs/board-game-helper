@@ -1,0 +1,22 @@
+@import 'tailwindcss';
+
+.table-row-header {
+  @apply py-2 font-medium text-xl text-left sticky left-0;
+}
+.table-row-item {
+  @apply px-1 py-2 text-sm sticky left-0 ;
+}
+.table-row {
+  @apply border-b-gray-700 border-b;
+}
+
+.table-header {
+  @apply text-sm border-b sticky top-0;
+}
+.table-row-item-icon div {
+  @apply flex justify-center;
+}
+.table-header, .table-row-item, .table-row-header, table tr  {
+  /* For background color of the table cells*/
+  background-color: var(--mat-bottom-sheet-container-background-color, var(--mat-sys-surface-container-low));
+}

@@ -6,7 +6,7 @@ export interface Player {
 
 export type AssignmentStatus = null | 'have' | 'may-have';
 
-type Assignments = Record<string, Record<string, AssignmentStatus>>;
+export type Assignments = Record<string, Record<string, AssignmentStatus>>;
 
 export interface CluedoState {
   gameDefinition: string;

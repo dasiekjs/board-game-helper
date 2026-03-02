@@ -11,4 +11,8 @@
     active-focus-label-text-color: #990000,
     label-text-weight: 'bold'
   ));
+
+  @include mat.button-overrides((
+    filled-container-color: #990000,
+  ));
 }

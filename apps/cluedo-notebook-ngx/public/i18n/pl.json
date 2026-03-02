@@ -21,14 +21,10 @@
     }
   },
   "mark-user": {
-    "title": "Oznacz gracza",
-    "form": {
-      "user": "Gracz"
-    },
     "actions": {
       "may-have": "Może mieć",
       "have": "Ma",
-      "cancel": "Anuluj"
+      "cancel": "Odznacz"
     }
   },
   "definition": {
