@@ -7,7 +7,9 @@
     "test:cluedo": "nx run cluedo-notebook-ngx:test:development",
     "affected:lint": "nx affected:lint",
     "affected:test": "nx affected:test",
-    "build:cluedo-notebook-ngx:prod": "nx run cluedo-notebook-ngx:build:production"
+    "build:cluedo-notebook-ngx:prod": "nx run cluedo-notebook-ngx:build:production",
+
+    "serve:dreams": "nx run dreams-dashboard-ngx:serve:development"
   },
   "private": true,
   "devDependencies": {
