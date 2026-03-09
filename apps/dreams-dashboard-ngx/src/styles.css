@@ -2,41 +2,23 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --bg-color-first: #0F0C29;
-  --bg-color-second: #302B63;
-  --bg-color-third: #24243E;
+  --background-light: #f8f5f7;
+  --background-dark: #22101a;
 }
 
-.animated-background {
-  width: 100%;
-  height: 100vh;
-  background: linear-gradient(
-    135deg,
-    var(--bg-color-first) 0%,
-    var(--bg-color-second) 50%,
-    var(--bg-color-third) 100%
-  );
-  background-size: 400% 400%;
-  animation: gradientFlow 15s ease infinite;
-  position: relative;
+@theme {
+  --color-primary: #f42593;
+  --color-background-light: #f8f5f7;
+  --color-background-dark: #22101a;
+  --font-display: "Plus Jakarta Sans", sans-serif;
 }
 
-@keyframes gradientFlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  25% {
-    background-position: 100% 50%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  75% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+
+.dream-gradient {
+  background-image: radial-gradient(circle at top right, rgba(244, 37, 147, 0.15), transparent),
+    radial-gradient(circle at bottom left, rgba(244, 37, 147, 0.05), transparent);
+  background-repeat: no-repeat;
 }

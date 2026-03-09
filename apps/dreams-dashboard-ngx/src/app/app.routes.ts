@@ -13,7 +13,7 @@ export const appRoutes: Route[] = [
   },
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '/init-game',
     pathMatch: 'full'
   }
 ];

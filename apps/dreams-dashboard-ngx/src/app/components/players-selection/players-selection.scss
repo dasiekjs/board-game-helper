@@ -1,0 +1,23 @@
+@use '@angular/material' as mat;
+@reference "../../../styles.css";
+
+:host {
+  @apply flex flex-col py-2;
+  @include mat.form-field-overrides((
+    outlined-container-shape: 13px,
+    outlined-outline-color: var(--color-primary),
+    outlined-focus-outline-color: var(--color-primary),
+  ));
+  @include mat.button-overrides((
+    outlined-container-shape: 13px,
+    outlined-outline-color: var(--color-primary),
+    outlined-container-height: 'stretch'
+  ));
+
+  .player-selection-form {
+    @apply flex flex-row justify-between gap-2 items-center;
+    .player-selection-form__input {
+      @apply flex-1;
+    }
+  }
+}

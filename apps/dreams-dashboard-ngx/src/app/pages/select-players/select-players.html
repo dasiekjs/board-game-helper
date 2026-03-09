@@ -1,1 +1,17 @@
-<p>select-players works!</p>
+<div class="select-players-card">
+  <div class="select-players-card__content">
+    <div class="select-players-card__content__icon">
+      <div class="select-players-card__content__icon__inner">
+        <lucide-angular
+          class=""
+          [img]="Sparkles"
+          color="var(--color-primary)"/>
+      </div>
+    </div>
+    <h1>{{ 'dream.select-players.title' }}</h1>
+    <div class="select-players-card__content__players">
+      <app-players-selection (playerAdded)="onPlayerAdded($event)"/>
+    </div>
+
+  </div>
+</div>
