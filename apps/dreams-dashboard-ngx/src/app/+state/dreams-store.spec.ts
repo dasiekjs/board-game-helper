@@ -79,6 +79,7 @@ describe('DreamsStore', () => {
 
     expect(store.players()[0].points).toBe(0);
     expect(store.players()[1].points).toBe(0);
+    expect(store.history(), 'Should not increase history num').toHaveLength(0);
   });
 
   it('should add valid points when the game was started', () => {
@@ -92,6 +93,57 @@ describe('DreamsStore', () => {
 
     expect(store.players()[0].points).toBe(10);
     expect(store.players()[1].points).toBe(12);
-  })
+    expect(store.currentRound(), 'Current round should be 2').toBe(2);
+    expect(store.history(), 'Should increase history num').toHaveLength(1);
+  });
 
+  it('should add 5 penalty points when finalized player does not have the lowest score', () => {
+    store.addPlayer('Me');
+    store.addPlayer('My Wife');
+    store.startGame();
+    store.finishRound([
+      { playerId: 1, points: 10 },
+      { playerId: 2, points: 6 }
+    ], 1);
+
+    expect(store.players()[0].points).toBe(15);
+    expect(store.players()[1].points).toBe(6);
+    expect(store.currentRound(), 'Current round should be 2').toBe(2);
+    expect(store.history(), 'Should increase history num').toHaveLength(1);
+  });
+
+  it('should not add penalty points when finalized player has the lowest score', () => {
+    store.addPlayer('Me');
+    store.addPlayer('My Wife');
+    store.startGame();
+    store.finishRound([
+      { playerId: 1, points: 5 },
+      { playerId: 2, points: 10 }
+    ], 1);
+
+    expect(store.players()[0].points).toBe(5);
+    expect(store.players()[1].points).toBe(10);
+    expect(store.currentRound(), 'Current round should be 2').toBe(2);
+    expect(store.history(), 'Should increase history num').toHaveLength(1);
+  });
+
+  it('should save valid history for each round', () => {
+    // TODO
+  });
+
+  it('should finalize game when someone reached more than 100 points', () => {
+    store.addPlayer('Me');
+    store.addPlayer('My Wife');
+    store.startGame();
+    store.finishRound([
+      { playerId: 1, points: 99 },
+      { playerId: 2, points: 98 }
+    ], 1);
+
+    expect(store.players()[0].points).toBe(104);
+    expect(store.players()[1].points).toBe(98);
+
+    expect(store.status(), 'Game should be finished').toBe('finished');
+    expect(store.currentRound(), 'Current round should not be changed').toBe(1);
+  });
 });
