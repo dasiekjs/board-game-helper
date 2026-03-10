@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@reference "../../../styles.css";
+
+:host {
+  @apply flex flex-col items-center justify-center py-5 px-5;
+}
+.select-players-card {
+  @apply w-full max-w-md rounded-md;
+  background: rgba(34, 16, 26, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(244, 37, 147, 0.15);
+}
+.select-players-card__content__icon {
+  @apply flex justify-center;
+}
+.select-players-card__content__icon__inner {
+  @apply rounded-3xl bg-primary/10 p-4 my-2;
+}
+.select-players-card__content h1  {
+ @apply text-2xl text-center;
+}
+
+.select-players-card__content__players {
+  @apply w-full px-4;
+}

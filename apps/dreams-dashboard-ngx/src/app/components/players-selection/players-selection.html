@@ -1,0 +1,9 @@
+<form class="player-selection-form" (ngSubmit)="addPlayer()">
+  <mat-form-field appearance="outline" class="player-selection-form__input" subscriptSizing="dynamic">
+    <mat-label>Outline form field</mat-label>
+    <input matInput placeholder="Placeholder" #inputElement [formControl]="playerName">
+  </mat-form-field>
+  <button matButton="outlined" type="button" (click)="addPlayer()">
+    <lucide-angular [img]="Plus" color="white"/>
+  </button>
+</form>

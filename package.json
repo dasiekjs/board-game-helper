@@ -7,7 +7,8 @@
     "test:cluedo": "nx run cluedo-notebook-ngx:test:development",
     "affected:lint": "nx affected:lint",
     "affected:test": "nx affected:test",
-    "build:cluedo-notebook-ngx:prod": "nx run cluedo-notebook-ngx:build:production"
+    "build:cluedo-notebook-ngx:prod": "nx run cluedo-notebook-ngx:build:production",
+    "serve:dreams": "nx run dreams-dashboard-ngx:serve:development"
   },
   "private": true,
   "devDependencies": {
@@ -26,6 +27,7 @@
     "@nx/eslint-plugin": "22.3.3",
     "@nx/js": "22.3.3",
     "@nx/module-federation": "22.3.3",
+    "@nx/react": "^22.3.3",
     "@nx/vite": "22.3.3",
     "@nx/vitest": "22.3.3",
     "@nx/web": "22.3.3",
@@ -69,6 +71,8 @@
     "@tailwindcss/postcss": "^4.1.18",
     "lucide-angular": "^0.562.0",
     "postcss": "^8.5.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "rxjs": "~7.8.0"
   }
 }
